@@ -5296,9 +5296,6 @@ Perl_sv_magic(pTHX_ register SV *const sv, SV *const obj, const int how,
     case PERL_MAGIC_overload_table:
         vtable = &PL_vtbl_ovrld;
         break;
-    case PERL_MAGIC_bm:
-	vtable = &PL_vtbl_bm;
-	break;
     case PERL_MAGIC_regdata:
 	vtable = &PL_vtbl_regdata;
 	break;
@@ -5307,9 +5304,6 @@ Perl_sv_magic(pTHX_ register SV *const sv, SV *const obj, const int how,
 	break;
     case PERL_MAGIC_env:
 	vtable = &PL_vtbl_env;
-	break;
-    case PERL_MAGIC_fm:
-	vtable = &PL_vtbl_fm;
 	break;
     case PERL_MAGIC_envelem:
 	vtable = &PL_vtbl_envelem;
@@ -5326,9 +5320,6 @@ Perl_sv_magic(pTHX_ register SV *const sv, SV *const obj, const int how,
     case PERL_MAGIC_nkeys:
 	vtable = &PL_vtbl_nkeys;
 	break;
-    case PERL_MAGIC_dbfile:
-	vtable = NULL;
-	break;
     case PERL_MAGIC_dbline:
 	vtable = &PL_vtbl_dbline;
 	break;
@@ -5344,6 +5335,8 @@ Perl_sv_magic(pTHX_ register SV *const sv, SV *const obj, const int how,
     case PERL_MAGIC_tiedscalar:
 	vtable = &PL_vtbl_packelem;
 	break;
+    case PERL_MAGIC_fm:
+    case PERL_MAGIC_bm:
     case PERL_MAGIC_qr:
 	vtable = &PL_vtbl_regexp;
 	break;
@@ -5361,6 +5354,7 @@ Perl_sv_magic(pTHX_ register SV *const sv, SV *const obj, const int how,
     case PERL_MAGIC_vec:
 	vtable = &PL_vtbl_vec;
 	break;
+    case PERL_MAGIC_dbfile:
     case PERL_MAGIC_sig:
     case PERL_MAGIC_arylen_p:
     case PERL_MAGIC_rhash:
